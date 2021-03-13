@@ -22,20 +22,9 @@ COUCHDB_LOGDB=db_imagelog
 couchdb_url=http://$COUCHDB_USERNAME:$COUCHDB_PASSWORD@$COUCHDB_IP:$COUCHDB_PORT
 
 # deploy.sh should be executed in parent dir of src
-ASSET_DIR=$(pwd)/assets
+#ASSET_DIR=$(pwd)/assets
 cd src
 
-echo "1. building functions..."
-mvn clean
-mvn package
-
-echo "2. uploading image to be processed"
-image=$ASSET_DIR/test.jpg
-if [ ! -f $image ]; then
-    echo "image $image does not exist, quit."
-    exit
-fi
-java -cp upload-image/target/upload-image.jar org.serverlessbench.UploadImage $image test.jpg $couchdb_url $COUCHDB_USERNAME $COUCHDB_PASSWORD $IMAGE_DATABASE
 
 echo "3. uploading functions to OpenWhisk..."
 wsk action update extractImageMetadata extract-image-metadata/target/extract-image-metadata.jar --main org.serverlessbench.ExtractImageMetadata --docker dplsming/java8action-imagemagic -i \
