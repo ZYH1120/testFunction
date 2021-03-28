@@ -5,7 +5,7 @@ COUCHDB_PASSWORD=some_passw0rd
 COUCHDB_PORT=31859
 IMAGE_DATABASE=db_image
 COUCHDB_LOGDB=db_imagelog
-image_name=test2.jpg
+image_name=test5.jpg
 
 couchdb_url=http://$COUCHDB_USERNAME:$COUCHDB_PASSWORD@$COUCHDB_IP:$COUCHDB_PORT
 
