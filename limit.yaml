@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mylimits
+spec:
+  limits:
+  - default:
+      cpu: 2000m
+    defaultRequest:
+      cpu: 2000m
+    type: Container
